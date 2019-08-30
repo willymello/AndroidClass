@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width='match_parent'
-    android:layout_height='match_parent'
-    android:background='@android:color/holo_orange_dark'
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="32dp"
+<layout>
 
-    >
+    <data>
 
-    <TextView
-        android:id='@+id/greeting_text'
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        tools:text='hello werld' />
+        <variable
+            name="viewModel"
+            type="com.example.helloworld.HelloWorldViewModel" />
+    </data>
 
-    <EditText
-        android:id='@+id/person_name'
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width='match_parent'
+        android:layout_height='match_parent'
+        android:background='@android:color/holo_orange_dark'
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
 
-    <Button
-        android:id='@+id/action_greet'
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text='greite' />
-    <Button
-        android:id='@+id/action_goodbye'
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text='farewell' />
-</LinearLayout>
+        >
+
+        <TextView
+            android:id='@+id/greeting_text'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@{viewModel.greetingText}"
+            tools:text='hello werld' />
+
+        <EditText
+            android:id='@+id/person_name'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@={viewModel.personText}" />
+
+        <Button
+            android:id='@+id/action_greet'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.onGreetActionClicked()}"
+            android:text='greite' />
+
+        <Button
+            android:id='@+id/action_goodbye'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.onFarewellActionClicked()}"
+            android:text='farewell' />
+    </LinearLayout>
+
+</layout>
